@@ -12,6 +12,8 @@ import project.storage.PostStore;
  * В Model мы добавляем объект posts
  * Контроллер заполняет Model и передает два объекта в Thymeleaf –
  * Model и View(posts.html). Thymeleaf генерирует HTML и возвращает ее клиенту.
+ *
+ * Проверка: http://localhost:8080/posts
  */
 @Controller
 public class PostController {

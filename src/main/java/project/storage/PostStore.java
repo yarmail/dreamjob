@@ -15,8 +15,8 @@ public class PostStore {
 
     private PostStore() {
         posts.put(1, new Post(1, "Junior Java Job"));
-        posts.put(2, new Post(1, "Middle Java Job"));
-        posts.put(3, new Post(1, "Senior Java Job"));
+        posts.put(2, new Post(2, "Middle Java Job"));
+        posts.put(3, new Post(3, "Senior Java Job"));
     }
 
     public static PostStore instOf() {

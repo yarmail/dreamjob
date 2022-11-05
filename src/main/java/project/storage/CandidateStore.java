@@ -12,8 +12,8 @@ public class CandidateStore {
 
     private CandidateStore() {
         candidates.put(1, new Candidate(1, "Candidate1"));
-        candidates.put(2, new Candidate(1, "Candidate2"));
-        candidates.put(3, new Candidate(1, "Candidate3"));
+        candidates.put(2, new Candidate(2, "Candidate2"));
+        candidates.put(3, new Candidate(3, "Candidate3"));
     }
 
     public static CandidateStore instOf() {
