@@ -10,9 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Создадим хранилище PostStore. Оно будет синглтон
  */
 public class PostStore {
-
     private static final PostStore INST = new PostStore();
-
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private PostStore() {

@@ -15,7 +15,6 @@ import project.storage.PostStore;
  */
 @Controller
 public class PostController {
-
     private final PostStore postStore = PostStore.instOf();
 
     @GetMapping ("/posts")
