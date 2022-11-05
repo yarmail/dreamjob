@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import project.storage.CandidateStore;
 
 /**
- * Проверка: http://localhost:8080/candidates
+ * Проверка: localhost:8080/candidates
  */
 @Controller
 public class CandidateController {
