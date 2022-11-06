@@ -26,11 +26,6 @@ public class PostController {
         return "posts";
     }
 
-    /**
-     *
-     * @param model
-     * @return
-     */
     @GetMapping("/formAddPost")
     public String addPost(Model model) {
         model.addAttribute("post", new Post());
