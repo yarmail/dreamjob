@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import project.model.Post;
 import project.storage.PostStore;
 
-
 @Controller
 public class PostController {
     private final PostStore postStore = PostStore.instOf();
