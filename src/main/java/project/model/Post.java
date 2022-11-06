@@ -1,17 +1,39 @@
 package project.model;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+
+/**
+ * Вакансия
+ * name - название вакансии
+ * description - описание вакансии
+ *
+ * created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
+ *
+ */
 
 public class Post {
     private int id;
     private String name;
+    private String description;
+    private LocalDateTime created =
+            LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
     public Post() {
     }
 
-    public Post(int id, String name) {
+    public Post(int id, String name, String description) {
         this.id = id;
         this.name = name;
+        this.description = description;
+    }
+
+    public Post(int id, String name, String description, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = created;
     }
 
     public int getId() {
@@ -30,6 +52,22 @@ public class Post {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -39,11 +77,15 @@ public class Post {
             return false;
         }
         Post post = (Post) o;
-        return id == post.id;
+        return id == post.id
+                && Objects.equals(name, post.name)
+                && Objects.equals(description, post.description)
+                && Objects.equals(created, post.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name, description, created);
     }
 }
+
