@@ -20,7 +20,20 @@ public class CandidateStore {
         return INST;
     }
 
+    public void add(Candidate candidate) {
+        candidates.putIfAbsent(candidate.getId(), candidate);
+
+    }
+
     public Collection<Candidate> findAll() {
         return candidates.values();
+    }
+
+    public Candidate findById(int id) {
+        return candidates.get(id);
+    }
+
+    public void update(Candidate candidate) {
+        candidates.put(candidate.getId(), candidate);
     }
 }
