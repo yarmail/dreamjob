@@ -3,8 +3,12 @@ package project.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import project.model.Post;
 import project.storage.PostStore;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PostController {
@@ -30,5 +34,18 @@ public class PostController {
     public String addPost(Model model) {
         model.addAttribute("post", new Post());
         return "addPost";
+    }
+
+    /**
+     * Старый вариант
+     * public String createPost(HttpServletRequest req) {
+     * String name = req.getParameter("name");
+     * System.out.println(name);
+     */
+    @PostMapping("/createPost")
+    public String createPost(@ModelAttribute Post post) {
+        System.out.println(post);
+        postStore.add(post);
+        return "redirect:/posts";
     }
 }

@@ -25,15 +25,16 @@
                 Новая вакансия
             </div>
             <div class="card-body">
-                <form>
+                <form th:action="@{/createPost}" method="POST">
+                    <input type="hidden" name="id" value="0"/>
                     <div class="form-group">
-                        <label>Название вакансии
-                            <input type="text" class="form-control">
+                        <label for="name">Название вакансии
+                            <input type="text" class="form-control" name="name" id="name">
                         </label>
                     </div>
                     <div class="form-group">
-                        <label>Описание вакансии
-                            <input type="text" class="form-control">
+                        <label for="description">Описание вакансии
+                            <input type="text" class="form-control" description="description" id="description">
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
