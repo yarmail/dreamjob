@@ -23,10 +23,19 @@ public class PostStore {
         return INST;
     }
 
+    public void add(Post post) {
+        posts.putIfAbsent(post.getId(), post);
+    }
+
     public Collection<Post> findAll() {
         return posts.values();
     }
 
-    public void add(Post post) {
+    public Post findById(int id) {
+        return posts.get(id);
+    }
+
+    public void update(Post post) {
+        posts.put(post.getId(), post);
     }
 }

@@ -91,6 +91,6 @@ public class Post {
                 + "id=" + id
                 + ", name='" + name
                 + '\'' + ", description='" + description
-                + '\'' + ", created=" + created +'}';
+                + '\'' + ", created=" + created + '}';
     }
 }
