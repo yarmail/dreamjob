@@ -1,28 +1,39 @@
-package project.model;
+package project.postmodel;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 /**
- * Резюме
- * name - имя кандидата
- * description - описание способностей
+ * Вакансия
+ * name - название вакансии
+ * description - описание вакансии
+ *
+ * created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
+ *
  */
-public class Candidate {
+
+public class Post {
     private int id;
     private String name;
     private String description;
     private LocalDateTime created =
             LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
-    public Candidate() {
+    public Post() {
     }
 
-    public Candidate(int id, String name, String description) {
+    public Post(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Post(int id, String name, String description, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = created;
     }
 
     public int getId() {
@@ -65,8 +76,8 @@ public class Candidate {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Candidate candidate = (Candidate) o;
-        return id == candidate.id;
+        Post post = (Post) o;
+        return id == post.id;
     }
 
     @Override
@@ -76,10 +87,10 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return "Candidate{"
+        return "Post{"
                 + "id=" + id
-                + ", name='" + name + '\''
-                + ", description='" + description + '\''
-                + ", created=" + created + '}';
+                + ", name='" + name
+                + '\'' + ", description='" + description
+                + '\'' + ", created=" + created + '}';
     }
 }

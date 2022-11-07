@@ -1,6 +1,6 @@
-package project.storage;
+package project.poststore;
 
-import project.model.Post;
+import project.postmodel.Post;
 
 import java.util.Collection;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class PostStore {
     private static final PostStore INST = new PostStore();
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
-    private PostStore() {
+    public PostStore() {
         posts.put(1, new Post(1, "Junior Java Job", "description1"));
         posts.put(2, new Post(2, "Middle Java Job", "description2"));
         posts.put(3, new Post(3, "Senior Java Job", "description3"));

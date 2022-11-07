@@ -1,4 +1,4 @@
-package project.controller;
+package project.postcontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import project.model.Post;
-import project.storage.PostStore;
+import project.postmodel.Post;
+import project.postservice.PostService;
 
 @Controller
 public class PostController {
-    private final PostStore postStore = PostStore.instOf();
+    private static final PostService POST_SERVICE = PostService.instOf();
 
     /**
      * Метод posts принимает объект Model.
@@ -25,7 +25,7 @@ public class PostController {
      */
     @GetMapping ("/posts")
     public String posts(Model model) {
-        model.addAttribute("posts", postStore.findAll());
+        model.addAttribute("posts", POST_SERVICE.findAll());
         return "posts";
     }
 
@@ -44,7 +44,7 @@ public class PostController {
     @PostMapping("/createPost")
     public String createPost(@ModelAttribute Post post) {
         System.out.println(post);
-        postStore.add(post);
+        POST_SERVICE.add(post);
         return "redirect:/posts";
     }
 
@@ -67,14 +67,14 @@ public class PostController {
      */
     @GetMapping("/formUpdatePost/{postId}")
     public String formUpdatePost(Model model, @PathVariable("postId") int id) {
-        model.addAttribute("post", postStore.findById(id));
+        model.addAttribute("post", POST_SERVICE.findById(id));
         return "updatePost";
     }
 
     @PostMapping("/updatePost")
     public  String updatePost(@ModelAttribute Post post) {
         System.out.println(post);
-        postStore.update(post);
+        POST_SERVICE.update(post);
         return "redirect:/posts";
     }
 }

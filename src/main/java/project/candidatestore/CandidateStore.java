@@ -1,6 +1,6 @@
-package project.storage;
+package project.candidatestore;
 
-import project.model.Candidate;
+import project.candidatemodel.Candidate;
 
 import java.util.Collection;
 import java.util.Map;
