@@ -1,15 +1,18 @@
 package project.candidateservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import project.candidatemodel.Candidate;
 import project.candidatestore.CandidateStore;
 import java.util.Collection;
 
+@Service
 public class CandidateService {
-    private static final CandidateService INST = new CandidateService();
-    private final CandidateStore candidateStore = CandidateStore.instOf();
+    private final CandidateStore candidateStore;
 
-    public static CandidateService instOf() {
-        return INST;
+    @Autowired
+    public CandidateService(CandidateStore candidateStore) {
+        this.candidateStore = candidateStore;
     }
 
     public void add(Candidate candidate) {

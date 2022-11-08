@@ -1,15 +1,18 @@
 package project.postservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import project.postmodel.Post;
 import project.poststore.PostStore;
 import java.util.Collection;
 
+@Service
 public class PostService {
-    private static final PostService INST = new PostService();
-    private final PostStore postStore = PostStore.instOf();
+    private final PostStore postStore;
 
-    public static PostService instOf() {
-        return INST;
+    @Autowired
+    public PostService(PostStore postStore) {
+        this.postStore = postStore;
     }
 
     public void add(Post post) {

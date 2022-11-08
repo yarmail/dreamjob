@@ -1,5 +1,6 @@
 package project.postcontroller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,12 @@ import project.postservice.PostService;
 
 @Controller
 public class PostController {
-    private final PostService postService = PostService.instOf();
+    private final PostService postService;
+
+    @Autowired
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     /**
      * Метод posts принимает объект Model.

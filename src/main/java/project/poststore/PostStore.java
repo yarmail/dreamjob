@@ -1,5 +1,6 @@
 package project.poststore;
 
+import org.springframework.stereotype.Repository;
 import project.postmodel.Post;
 
 import java.util.Collection;
@@ -10,8 +11,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Создадим хранилище PostStore. Оно будет синглтон
  */
+@Repository
 public class PostStore {
-    private static final PostStore INST = new PostStore();
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
     private final AtomicInteger id = new AtomicInteger();
 
@@ -19,10 +20,6 @@ public class PostStore {
         posts.put(id.incrementAndGet(), new Post(id.get(), "Junior Java Job", "description1"));
         posts.put(id.incrementAndGet(), new Post(id.get(), "Middle Java Job", "description2"));
         posts.put(id.incrementAndGet(), new Post(id.get(), "Senior Java Job", "description3"));
-    }
-
-    public static PostStore instOf() {
-        return INST;
     }
 
     public void add(Post post) {

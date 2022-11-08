@@ -1,5 +1,6 @@
 package project.candidatecontroller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,12 @@ import project.candidateservice.CandidateService;
  */
 @Controller
 public class CandidateController {
-    private final CandidateService candidateService = CandidateService.instOf();
+    private final CandidateService candidateService;
+
+    @Autowired
+    public CandidateController(CandidateService candidateService) {
+        this.candidateService = candidateService;
+    }
 
     @GetMapping("/candidates")
     public String candidates(Model model) {
