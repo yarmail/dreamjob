@@ -6,25 +6,25 @@ import java.util.Collection;
 
 public class CandidateService {
     private static final CandidateService INST = new CandidateService();
-    private static final CandidateStore CANDIDATE_STORE = CandidateStore.instOf();
+    private final CandidateStore candidateStore = CandidateStore.instOf();
 
     public static CandidateService instOf() {
         return INST;
     }
 
     public void add(Candidate candidate) {
-        CANDIDATE_STORE.add(candidate);
+        candidateStore.add(candidate);
     }
 
     public Collection<Candidate> findAll() {
-        return CANDIDATE_STORE.findAll();
+        return candidateStore.findAll();
     }
 
     public Candidate findById(int id) {
-        return CANDIDATE_STORE.findById(id);
+        return candidateStore.findById(id);
     }
 
     public void replace(Candidate candidate) {
-        CANDIDATE_STORE.replace(candidate);
+        candidateStore.replace(candidate);
     }
 }

@@ -11,7 +11,7 @@ import project.postservice.PostService;
 
 @Controller
 public class PostController {
-    private static final PostService POST_SERVICE = PostService.instOf();
+    private final PostService postService = PostService.instOf();
 
     /**
      * Метод posts принимает объект Model.
@@ -25,7 +25,7 @@ public class PostController {
      */
     @GetMapping ("/posts")
     public String posts(Model model) {
-        model.addAttribute("posts", POST_SERVICE.findAll());
+        model.addAttribute("posts", postService.findAll());
         return "posts";
     }
 
@@ -43,7 +43,7 @@ public class PostController {
      */
     @PostMapping("/createPost")
     public String createPost(@ModelAttribute Post post) {
-        POST_SERVICE.add(post);
+        postService.add(post);
         return "redirect:/posts";
     }
 
@@ -66,13 +66,13 @@ public class PostController {
      */
     @GetMapping("/formUpdatePost/{postId}")
     public String formUpdatePost(Model model, @PathVariable("postId") int id) {
-        model.addAttribute("post", POST_SERVICE.findById(id));
+        model.addAttribute("post", postService.findById(id));
         return "updatePost";
     }
 
     @PostMapping("/updatePost")
     public  String updatePost(@ModelAttribute Post post) {
-        POST_SERVICE.replace(post);
+        postService.replace(post);
         return "redirect:/posts";
     }
 }
