@@ -30,7 +30,6 @@ public class CandidateController {
 
     @PostMapping("/createCandidate")
     public String createCandidate(@ModelAttribute Candidate candidate) {
-        System.out.println(candidate);
         CANDIDATE_SERVICE.add(candidate);
         return "redirect:/candidates";
     }
@@ -43,8 +42,7 @@ public class CandidateController {
 
     @PostMapping("/updateCandidate")
     public  String updateCandidate(@ModelAttribute Candidate candidate) {
-        System.out.println(candidate);
-        CANDIDATE_SERVICE.update(candidate);
+        CANDIDATE_SERVICE.replace(candidate);
         return "redirect:/candidates";
     }
 }

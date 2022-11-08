@@ -35,7 +35,7 @@ public class PostStore {
         return posts.get(id);
     }
 
-    public void update(Post post) {
+    public void replace(Post post) {
         posts.put(post.getId(), post);
     }
 }

@@ -24,7 +24,7 @@ public class PostService {
         return POST_STORE.findById(id);
     }
 
-    public void update(Post post) {
-        POST_STORE.update(post);
+    public void replace(Post post) {
+        POST_STORE.replace(post);
     }
 }

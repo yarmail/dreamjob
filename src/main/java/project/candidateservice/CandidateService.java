@@ -24,7 +24,7 @@ public class CandidateService {
         return CANDIDATE_STORE.findById(id);
     }
 
-    public void update(Candidate candidate) {
-        CANDIDATE_STORE.update(candidate);
+    public void replace(Candidate candidate) {
+        CANDIDATE_STORE.replace(candidate);
     }
 }

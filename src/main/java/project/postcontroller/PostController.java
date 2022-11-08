@@ -43,7 +43,6 @@ public class PostController {
      */
     @PostMapping("/createPost")
     public String createPost(@ModelAttribute Post post) {
-        System.out.println(post);
         POST_SERVICE.add(post);
         return "redirect:/posts";
     }
@@ -73,8 +72,7 @@ public class PostController {
 
     @PostMapping("/updatePost")
     public  String updatePost(@ModelAttribute Post post) {
-        System.out.println(post);
-        POST_SERVICE.update(post);
+        POST_SERVICE.replace(post);
         return "redirect:/posts";
     }
 }
