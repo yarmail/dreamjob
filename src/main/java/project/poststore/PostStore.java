@@ -1,8 +1,8 @@
 package project.poststore;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import project.postmodel.Post;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Создадим хранилище PostStore. Оно будет синглтон
  */
+@ThreadSafe
 @Repository
 public class PostStore {
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();

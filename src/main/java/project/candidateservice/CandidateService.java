@@ -1,11 +1,13 @@
 package project.candidateservice;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.candidatemodel.Candidate;
 import project.candidatestore.CandidateStore;
 import java.util.Collection;
 
+@ThreadSafe
 @Service
 public class CandidateService {
     private final CandidateStore candidateStore;

@@ -1,5 +1,6 @@
 package project.candidatecontroller;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import project.candidateservice.CandidateService;
 /**
  * Проверка: localhost:8080/candidates
  */
+@ThreadSafe
 @Controller
 public class CandidateController {
     private final CandidateService candidateService;

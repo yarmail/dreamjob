@@ -1,5 +1,6 @@
 package project.postcontroller;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import project.postmodel.Post;
 import project.postservice.PostService;
 
+@ThreadSafe
 @Controller
 public class PostController {
     private final PostService postService;

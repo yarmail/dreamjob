@@ -1,11 +1,13 @@
 package project.postservice;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.postmodel.Post;
 import project.poststore.PostStore;
 import java.util.Collection;
 
+@ThreadSafe
 @Service
 public class PostService {
     private final PostStore postStore;

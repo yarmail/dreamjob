@@ -1,5 +1,6 @@
 package project.candidatestore;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import project.candidatemodel.Candidate;
 import java.util.Collection;
@@ -7,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@ThreadSafe
 @Repository
 public class CandidateStore {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
