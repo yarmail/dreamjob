@@ -51,6 +51,12 @@
                         <i class="fa fa-edit"></i>
                     </a>
                     <span th:text="${post.name}"></span>
+                    <span th:if="${post.visible}">
+                        <i class="fa fa-check-square-o"></i>
+                    </span>
+                    <span th:if="${!post.visible}">
+                        <i class="fa fa-square-o"></i>
+                    </span>
                 </td>
                 <td th:text="${post.description}" />
                 <td th:text="${post.created}" />
@@ -69,4 +75,10 @@
 <a th:href="@{|/formUpdatePost/${post.id}|}">
 Внутри тега A использует тег <i он позволяет отобразить картинку из шаблонов bootstrap.
 Добавьте в заголовок файла posts.html ссылку на стили.
+
+Здесь мы используем новый тег Thymeleaf - th:if.
+Он принимает переменную типа boolean.
+Если она true, то элемент становится видимым.
+Если false, то элемент не отображается на экране.
+
 -->
