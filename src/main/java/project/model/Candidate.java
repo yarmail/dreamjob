@@ -1,40 +1,28 @@
-package project.postmodel;
+package project.model;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 /**
- * Вакансия
- * name - название вакансии
- * description - описание вакансии
- *
- * created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
- *
+ * Резюме
+ * name - имя кандидата
+ * description - описание способностей
  */
-
-public class Post {
+public class Candidate {
     private int id;
     private String name;
     private String description;
     private LocalDateTime created =
             LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-    private boolean visible;
 
-    public Post() {
+    public Candidate() {
     }
 
-    public Post(int id, String name, String description) {
+    public Candidate(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-    }
-
-    public Post(int id, String name, String description, LocalDateTime created) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.created = created;
     }
 
     public int getId() {
@@ -69,14 +57,6 @@ public class Post {
         this.created = created;
     }
 
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -85,8 +65,8 @@ public class Post {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Post post = (Post) o;
-        return id == post.id;
+        Candidate candidate = (Candidate) o;
+        return id == candidate.id;
     }
 
     @Override
@@ -96,10 +76,10 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Post {"
+        return "Candidate{"
                 + "id=" + id
-                + ", name='" + name
-                + '\'' + ", description='" + description
-                + '\'' + ", created=" + created + '}';
+                + ", name='" + name + '\''
+                + ", description='" + description + '\''
+                + ", created=" + created + '}';
     }
 }

@@ -1,4 +1,4 @@
-package project.candidatecontroller;
+package project.controller;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import project.candidatemodel.Candidate;
-import project.candidateservice.CandidateService;
+import project.model.Candidate;
+import project.service.CandidateService;
+import project.service.CityService;
 
 /**
  * Проверка: localhost:8080/candidates
@@ -18,10 +19,12 @@ import project.candidateservice.CandidateService;
 @Controller
 public class CandidateController {
     private final CandidateService candidateService;
+    private final CityService cityService;
 
     @Autowired
-    public CandidateController(CandidateService candidateService) {
+    public CandidateController(CandidateService candidateService, CityService cityService) {
         this.candidateService = candidateService;
+        this.cityService = cityService;
     }
 
     @GetMapping("/candidates")
@@ -32,7 +35,7 @@ public class CandidateController {
 
     @GetMapping("/formAddCandidate")
     public String addCandidate(Model model) {
-        model.addAttribute("candidate", new Candidate());
+        model.addAttribute("cities", cityService.getAllCities());
         return "addCandidate";
     }
 

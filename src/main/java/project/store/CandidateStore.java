@@ -1,8 +1,8 @@
-package project.candidatestore;
+package project.store;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
-import project.candidatemodel.Candidate;
+import project.model.Candidate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

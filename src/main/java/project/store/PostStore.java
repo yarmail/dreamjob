@@ -1,8 +1,8 @@
-package project.poststore;
+package project.store;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
-import project.postmodel.Post;
+import project.model.Post;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,10 +1,10 @@
-package project.postservice;
+package project.service;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project.postmodel.Post;
-import project.poststore.PostStore;
+import project.model.Post;
+import project.store.PostStore;
 import java.util.Collection;
 
 @ThreadSafe

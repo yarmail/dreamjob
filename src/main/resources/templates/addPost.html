@@ -39,6 +39,12 @@
                         <label for="description">Описание вакансии </label>
                         <input type="text" class="form-control" description="description" id="description">
                     </div>
+                    <div class="form-group">
+                        <label for="city.id">Город</label>
+                        <select class="form-control" id="city.id" name="city.id">
+                            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
@@ -47,3 +53,18 @@
 </div>
 </body>
 </html>
+<!--
+Примечания
+Здесь нужно разобрать нюанс с именами полей формы.
+Spring использует имена полей формы для ассоциации с моделями.
+В модели Post мы добавили поле City. City - это объект.
+Чтобы его создать Spring будет искать в запросе
+поля с составными именами: city.id, city.name.
+Для select мы можем переделать только поле city.id.
+Это ограничение тега select.
+Для нашего случая этого достаточно,
+так как данные о городах у нас находятся в справочниках.
+<select class="form-control" id="city.id" name="city.id">
+
+
+-->
