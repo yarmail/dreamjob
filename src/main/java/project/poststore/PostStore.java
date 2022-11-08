@@ -5,6 +5,7 @@ import project.postmodel.Post;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Создадим хранилище PostStore. Оно будет синглтон
@@ -12,11 +13,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PostStore {
     private static final PostStore INST = new PostStore();
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
+    private final AtomicInteger id = new AtomicInteger();
 
     public PostStore() {
-        posts.put(1, new Post(1, "Junior Java Job", "description1"));
-        posts.put(2, new Post(2, "Middle Java Job", "description2"));
-        posts.put(3, new Post(3, "Senior Java Job", "description3"));
+        posts.put(id.incrementAndGet(), new Post(id.get(), "Junior Java Job", "description1"));
+        posts.put(id.incrementAndGet(), new Post(id.get(), "Middle Java Job", "description2"));
+        posts.put(id.incrementAndGet(), new Post(id.get(), "Senior Java Job", "description3"));
     }
 
     public static PostStore instOf() {
@@ -24,6 +26,7 @@ public class PostStore {
     }
 
     public void add(Post post) {
+        post.setId(id.incrementAndGet());
         posts.putIfAbsent(post.getId(), post);
     }
 
