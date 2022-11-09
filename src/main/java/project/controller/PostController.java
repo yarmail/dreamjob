@@ -51,9 +51,16 @@ public class PostController {
      * public String createPost(HttpServletRequest req) {
      * String name = req.getParameter("name");
      * System.out.println(name);
+     *
+     * С формы у города приходит только его id,
+     * поэтому прежде чем отправлять на сохранение наш
+     * целевой объект - необходимо взять из сервиса город целиком, просетить(?)
+     * его объекта и далее отправляем на сохранение Post
      */
     @PostMapping("/createPost")
     public String createPost(@ModelAttribute Post post) {
+        int cityId = post.getCity().getId();
+        post.setCity(cityService.findById(cityId));
         postService.add(post);
         return "redirect:/posts";
     }
@@ -78,11 +85,14 @@ public class PostController {
     @GetMapping("/formUpdatePost/{postId}")
     public String formUpdatePost(Model model, @PathVariable("postId") int id) {
         model.addAttribute("post", postService.findById(id));
+        model.addAttribute("cities", cityService.getAllCities());
         return "updatePost";
     }
 
     @PostMapping("/updatePost")
     public  String updatePost(@ModelAttribute Post post) {
+        int cityId = post.getCity().getId();
+        post.setCity(cityService.findById(cityId));
         postService.replace(post);
         return "redirect:/posts";
     }

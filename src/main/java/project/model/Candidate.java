@@ -15,6 +15,7 @@ public class Candidate {
     private String description;
     private LocalDateTime created =
             LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+    private City city;
 
     public Candidate() {
     }
@@ -55,6 +56,14 @@ public class Candidate {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override
