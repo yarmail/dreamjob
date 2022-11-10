@@ -79,6 +79,7 @@ public class CandidateController {
             throws IOException {
         int cityId = candidate.getCity().getId();
         candidate.setCity(cityService.findById(cityId));
+        candidate.setPhoto(file.getBytes());
         candidateService.replace(candidate);
         return "redirect:/candidates";
     }
