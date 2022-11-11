@@ -4,32 +4,40 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.model.Post;
-import project.store.PostStore;
-import java.util.Collection;
+import project.store.PostDBStore;
+import java.util.List;
 
 @ThreadSafe
 @Service
 public class PostService {
-    private final PostStore postStore;
+    private final PostDBStore postDBStore;
+    private final CityService cityService;
 
     @Autowired
-    public PostService(PostStore postStore) {
-        this.postStore = postStore;
+    public PostService(PostDBStore postDBStore, CityService cityService) {
+        this.postDBStore = postDBStore;
+        this.cityService = cityService;
     }
 
     public void add(Post post) {
-        postStore.add(post);
+        postDBStore.add(post);
     }
 
-    public Collection<Post> findAll() {
-        return postStore.findAll();
+    public List<Post> findAll() {
+        List<Post> posts = postDBStore.findAll();
+        posts.forEach(
+                post -> post.setCity(
+                        cityService.findById(post.getCity().getId())
+                )
+        );
+        return posts;
     }
 
     public Post findById(int id) {
-        return postStore.findById(id);
+        return postDBStore.findById(id);
     }
 
     public void replace(Post post) {
-        postStore.replace(post);
+        postDBStore.replace(post);
     }
 }
