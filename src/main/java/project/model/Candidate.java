@@ -34,7 +34,6 @@ public class Candidate {
         this.created = created;
         this.city = city;
         this.photo = photo;
-
     }
 
     public int getId() {

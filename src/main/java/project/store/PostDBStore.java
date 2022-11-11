@@ -10,11 +10,12 @@ import org.apache.log4j.Logger;
 import project.model.City;
 import project.model.Post;
 
+/* есть тесты */
 @Repository
 public class PostDBStore {
     private final static String FIND_ALL = "SELECT * FROM post ORDER BY id";
     private final static String ADD = "INSERT INTO post(name, description, created, visible, city_id) VALUES (?, ?, ?, ?, ?)";
-    private final static String UPDATE = "UPDATE post SET name = ?, description = ?, visible = ?, city_id = ? WHERE id = ?";
+    private final static String UPDATE = "UPDATE post SET name = ?, description = ?, created = ?, city_id = ?, visible = ?  WHERE id = ?";
     private final static String FIND_BY_ID = "SELECT * FROM post WHERE id = ?";
     private final static String DELETE = "DELETE FROM post WHERE id = ?";
     private static final Logger LOG = Logger.getLogger(PostDBStore.class);
@@ -67,8 +68,8 @@ public class PostDBStore {
             ps.setString(1, post.getName());
             ps.setString(2, post.getDescription());
             ps.setTimestamp(3,  Timestamp.valueOf(post.getCreated()));
-            ps.setBoolean(4, post.isVisible());
-            ps.setInt(5, post.getCity().getId());
+            ps.setInt(4, post.getCity().getId());
+            ps.setBoolean(5, post.isVisible());
             ps.setInt(6, post.getId());
             return ps.executeUpdate() == 1;
         } catch (Exception e) {
