@@ -27,6 +27,16 @@ public class Candidate {
         this.description = description;
     }
 
+    public Candidate(int id, String name, String description, LocalDateTime created, City city, byte[] photo) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = created;
+        this.city = city;
+        this.photo = photo;
+
+    }
+
     public int getId() {
         return id;
     }
