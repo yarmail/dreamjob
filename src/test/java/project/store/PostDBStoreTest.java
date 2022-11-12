@@ -14,10 +14,10 @@ import java.util.List;
 
 class PostDBStoreTest {
     private static final PostDBStore STORE = new PostDBStore(new Main().loadPool());
-    private Post post1 = new Post();
-    private Post post2 = new Post();
 
-    private void wipeTable() {
+    /* каждый тест очищаем таблицу от результатов */
+    @BeforeEach
+    private void init() {
         try (Connection cn = new Main().loadPool().getConnection();
              PreparedStatement statement = cn.prepareStatement(
                      "delete from post")) {
@@ -27,24 +27,9 @@ class PostDBStoreTest {
         }
     }
 
-    @BeforeEach
-    private void init() {
-        wipeTable();
-        post1.setId(0);
-        post1.setName("name1");
-        post1.setDescription("description1");
-        post1.setCity(new City(0, "city1"));
-        post1.setVisible(true);
-
-        post2.setId(1);
-        post2.setName("name2");
-        post2.setDescription("description2");
-        post2.setCity(new City(1, "city2"));
-        post2.setVisible(true);
-    }
-
     @Test
     public void add() {
+        Post post1 = new Post(0, "name1", "description1", true, new City(0, "city1"));
         STORE.add(post1);
         Post result = STORE.findById(post1.getId());
         assertThat(result).isEqualTo(post1);
@@ -52,6 +37,8 @@ class PostDBStoreTest {
 
     @Test
     public void replace() {
+        Post post1 = new Post(0, "name1", "description1", true, new City(0, "city1"));
+        Post post2 = new Post(1, "name2", "description2", true, new City(1, "city2"));
         STORE.add(post1);
         post2.setId(post1.getId());
         STORE.replace(post2);
@@ -61,6 +48,8 @@ class PostDBStoreTest {
 
     @Test
     public void findAll() {
+        Post post1 = new Post(0, "name1", "description1", true, new City(0, "city1"));
+        Post post2 = new Post(1, "name2", "description2", true, new City(1, "city2"));
         STORE.add(post1);
         STORE.add(post2);
         List<Post> result = STORE.findAll();
