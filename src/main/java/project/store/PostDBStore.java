@@ -1,7 +1,6 @@
 package project.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ public class PostDBStore {
     private static final Logger LOG = Logger.getLogger(PostDBStore.class);
     private final BasicDataSource pool;
 
-    @Autowired
     public PostDBStore(BasicDataSource pool) {
         this.pool = pool;
     }

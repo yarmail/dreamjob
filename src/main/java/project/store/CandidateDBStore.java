@@ -2,7 +2,6 @@ package project.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class CandidateDBStore {
     private static final Logger LOG = Logger.getLogger(CandidateDBStore.class);
     private final BasicDataSource pool;
 
-    @Autowired
     public CandidateDBStore(BasicDataSource pool) {
         this.pool = pool;
     }

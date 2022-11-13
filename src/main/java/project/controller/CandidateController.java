@@ -1,7 +1,6 @@
 package project.controller;
 
 import net.jcip.annotations.ThreadSafe;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -25,7 +24,6 @@ public class CandidateController {
     private final CandidateService candidateService;
     private final CityService cityService;
 
-    @Autowired
     public CandidateController(CandidateService candidateService, CityService cityService) {
         this.candidateService = candidateService;
         this.cityService = cityService;

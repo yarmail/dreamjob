@@ -1,7 +1,6 @@
 package project.service;
 
 import net.jcip.annotations.ThreadSafe;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.model.Post;
 import project.store.PostDBStore;
@@ -13,7 +12,6 @@ public class PostService {
     private final PostDBStore postDBStore;
     private final CityService cityService;
 
-    @Autowired
     public PostService(PostDBStore postDBStore, CityService cityService) {
         this.postDBStore = postDBStore;
         this.cityService = cityService;

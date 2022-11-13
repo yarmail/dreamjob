@@ -12,6 +12,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Обратите внимание, что мы не используем Spring в тестах.
+ * Загрузка пула соединений происходит за счет просто вызова
+ * метода loadPool() без Spring. Так же мы сами создаем объект PostDBStore.
+ * 7. Выполните фазу mvn test.
+ * Когда maven выполняет фазу test, то Liquibase создает в корне проекта базу h2.
+ * Для тестов PostDbStore использует файл настроек src/test/resources/db.properties.
+ * Это позволяет использовать разные базы не меняя код.
+ */
 class PostDBStoreTest {
     private static final PostDBStore STORE = new PostDBStore(new Main().loadPool());
 
