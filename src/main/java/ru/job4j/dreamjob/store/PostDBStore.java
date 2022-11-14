@@ -1,4 +1,4 @@
-package project.store;
+package ru.job4j.dreamjob.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.stereotype.Repository;
@@ -6,8 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
-import project.model.City;
-import project.model.Post;
+import ru.job4j.dreamjob.model.City;
+import ru.job4j.dreamjob.model.Post;
 
 /* есть тесты */
 @Repository

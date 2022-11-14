@@ -1,8 +1,9 @@
-package project.store;
+package ru.job4j.dreamjob.store;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
-import project.model.Candidate;
+import ru.job4j.dreamjob.model.Candidate;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

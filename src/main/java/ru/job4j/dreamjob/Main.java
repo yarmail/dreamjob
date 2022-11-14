@@ -1,4 +1,4 @@
-package project;
+package ru.job4j.dreamjob;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.SpringApplication;

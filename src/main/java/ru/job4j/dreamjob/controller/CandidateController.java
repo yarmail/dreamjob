@@ -1,4 +1,4 @@
-package project.controller;
+package ru.job4j.dreamjob.controller;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.core.io.ByteArrayResource;
@@ -10,9 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import project.model.Candidate;
-import project.service.CandidateService;
-import project.service.CityService;
+import ru.job4j.dreamjob.model.Candidate;
+import ru.job4j.dreamjob.service.CandidateService;
+import ru.job4j.dreamjob.service.CityService;
+
 import java.io.IOException;
 
 /**

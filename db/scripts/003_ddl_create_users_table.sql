@@ -1,6 +1,6 @@
-create table if not exists Users(
+create table if not exists users(
     id serial primary key,
-    name varchar (100),
+    name varchar,
     password text,
-    email varchar(100) unique
+    email varchar unique
 );

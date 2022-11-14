@@ -1,8 +1,8 @@
-package project.service;
+package ru.job4j.dreamjob.service;
 
 import org.springframework.stereotype.Service;
-import project.model.User;
-import project.store.UsersDbStore;
+import ru.job4j.dreamjob.model.User;
+import ru.job4j.dreamjob.store.UsersDbStore;
 
 import java.util.Optional;
 

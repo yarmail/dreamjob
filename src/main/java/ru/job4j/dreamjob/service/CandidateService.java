@@ -1,10 +1,11 @@
-package project.service;
+package ru.job4j.dreamjob.service;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project.model.Candidate;
-import project.store.CandidateDBStore;
+import ru.job4j.dreamjob.model.Candidate;
+import ru.job4j.dreamjob.store.CandidateDBStore;
+
 import java.util.List;
 
 @ThreadSafe

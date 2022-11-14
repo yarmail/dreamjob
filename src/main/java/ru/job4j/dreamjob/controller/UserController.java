@@ -1,4 +1,4 @@
-package project.controller;
+package ru.job4j.dreamjob.controller;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import project.model.User;
-import project.service.UsersService;
+import ru.job4j.dreamjob.model.User;
+import ru.job4j.dreamjob.service.UsersService;
 
 import java.util.Optional;
 

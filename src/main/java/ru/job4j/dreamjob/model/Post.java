@@ -1,4 +1,4 @@
-package project.model;
+package ru.job4j.dreamjob.model;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
