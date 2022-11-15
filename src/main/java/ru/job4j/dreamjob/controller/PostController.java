@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dreamjob.model.Post;
+import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.CityService;
 import ru.job4j.dreamjob.service.PostService;
+import ru.job4j.dreamjob.util.UserSession;
+
+import javax.servlet.http.HttpSession;
 
 @ThreadSafe
 @Controller
@@ -26,20 +30,25 @@ public class PostController {
      * Метод posts принимает объект Model.
      * Он используется Thymeleaf для поиска объектов,
      * которые нужны отобразить на виде.
-     * В Model мы добавляем объект posts
+     *
+     * В Model мы добавляем объект posts и отправляем на страницу posts
      * Контроллер заполняет Model и передает два объекта в Thymeleaf –
      * Model и View(posts.html). Thymeleaf генерирует HTML и возвращает ее клиенту.
      *
      * Проверка: localhost:8080/posts
      */
     @GetMapping ("/posts")
-    public String posts(Model model) {
+    public String posts(Model model, HttpSession session) {
+        User user = UserSession.getUser(session);
+        model.addAttribute("user", user);
         model.addAttribute("posts", postService.findAll());
         return "posts";
     }
 
     @GetMapping("/formAddPost")
-    public String addPost(Model model) {
+    public String addPost(Model model, HttpSession session) {
+        User user = UserSession.getUser(session);
+        model.addAttribute("user", user);
         model.addAttribute("cities", cityService.getAllCities());
         return "addPost";
     }

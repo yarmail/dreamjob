@@ -11,6 +11,9 @@ import java.util.Optional;
 import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.UsersService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @ThreadSafe
 public class UserController {
@@ -74,14 +77,38 @@ public class UserController {
         return "login";
     }
 
+    /**
+     * Когда браузер отправляет запрос в tomcat создается объект HttpSession.
+     * Этот объект связан с работой текущего пользователя.
+     * Объект HttpSession можно получить через HttpServletRequest.
+     *
+     * Метод getSession возвращает объект HttpSession.
+     * В нем можно хранить информацию о текущем пользователе.
+     *
+     * Чтобы добавить данные в HttpSession, используем метод
+     * setAttribute(key, value). Чтобы получить данные из
+     * HttpSession используется метод getAttribute(key).
+     *
+     * Обратите внимание, что внутри HttpSession используется
+     * многопоточная коллекция ConcurrentHashMap. Это связано
+     * с многопоточным окружением. Напомню, что для работы
+     * с ConcurrentHashMap нельзя использовать операции
+     * check-then-act. То есть HttpSession можно использовать
+     * либо для записи, либо для чтения,
+     * но нельзя делать это одновременно.
+     *
+     * Теперь данные записанные в HttpSession можно получить на другой странице.
+     */
     @PostMapping("/login")
-    public String login(@ModelAttribute User user) {
+    public String login(@ModelAttribute User user, HttpServletRequest request) {
         Optional<User> userDb = usersService.findUserByEmailAndPassword(
                 user.getEmail(), user.getPassword()
         );
         if (userDb.isEmpty()) {
             return "redirect:/loginPage?fail=true";
         }
+        HttpSession session = request.getSession();
+        session.setAttribute("user", userDb.get());
         return "redirect:/index";
     }
 }
