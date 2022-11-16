@@ -1,3 +1,8 @@
 ### Project Dream Job
 
-Большое большое длиннное длинное описане проекта длиной не менее 150 знаков будет написано после того, как закончится весь проект и можно  будет понять какие в итоге использовались технологии и чем все закончилось
+Приложение по поиску работы. Публикуются вакансии и резюме. <br/>
+В приложении использовано:
+- Bootstrap, Thymeleaf
+- Springframework, Spring Boot, 
+- Log4j, Junit5, Assertj, Mockito, Checkstyle
+- Postgresql, H2, Liquibase, PreparedStatement
