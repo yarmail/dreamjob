@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -31,22 +32,28 @@ import java.io.IOException;
 @Component
 public class AuthFilter implements Filter {
 
+    private static final List<String> FILTER =
+            List.of("fail", "index", "registration", "success", "loginPage", "login", "formAddUser");
+
     @Override
-    public void doFilter(
-            ServletRequest request,
-            ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String uri = req.getRequestURI();
-        if (uri.endsWith("loginPage") || uri.endsWith("login")) {
+        if (checkURI(uri)) {
             chain.doFilter(req, res);
             return;
         }
+
         if (req.getSession().getAttribute("user") == null) {
             res.sendRedirect(req.getContextPath() + "/loginPage");
             return;
         }
         chain.doFilter(req, res);
+    }
+
+    private boolean checkURI(String uri) {
+        return AuthFilter.FILTER.stream().anyMatch(uri::endsWith);
     }
 }
