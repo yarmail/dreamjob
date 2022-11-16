@@ -36,6 +36,7 @@ public class PostController {
      * Model и View(posts.html). Thymeleaf генерирует HTML и возвращает ее клиенту.
      *
      * Проверка: localhost:8080/posts
+     * (есть тест)
      */
     @GetMapping ("/posts")
     public String posts(Model model, HttpSession session) {
